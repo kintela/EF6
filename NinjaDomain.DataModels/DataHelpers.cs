@@ -21,7 +21,9 @@ namespace NinjaDomain.DataModels
                     return;
                 }
 
-                //var vtClan=context.Clan
+                var vtClan = context.Clans.Add(new Clan { ClanName="Vermont Clan"});
+                var turtleClan= context.Clans.Add(new Clan { ClanName = "Turtles" });
+                var amClan = context.Clans.Add(new Clan { ClanName = "American Ninja Warriors" });
             }
         }
     }
