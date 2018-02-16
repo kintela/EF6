@@ -55,11 +55,16 @@
     <Compile Include="Migrations\201802081232078_AddBirthdayToNinja.Designer.cs">
       <DependentUpon>201802081232078_AddBirthdayToNinja.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802160942333_AddNuevosCampos.cs" />
+    <Compile Include="Migrations\201802160942333_AddNuevosCampos.Designer.cs">
+      <DependentUpon>201802160942333_AddNuevosCampos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NinjaContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802081232078_AddBirthdayToNinja.resx">
       <DependentUpon>201802081232078_AddBirthdayToNinja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802160942333_AddNuevosCampos.resx">
+      <DependentUpon>201802160942333_AddNuevosCampos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
