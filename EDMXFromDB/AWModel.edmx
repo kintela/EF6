@@ -1,0 +1,309 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ContosoRetailDWModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DimProduct">
+          <Key>
+            <PropertyRef Name="ProductKey" />
+          </Key>
+          <Property Name="ProductKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductLabel" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ProductDescription" Type="nvarchar" MaxLength="400" />
+          <Property Name="ProductSubcategoryKey" Type="int" />
+          <Property Name="Manufacturer" Type="nvarchar" MaxLength="50" />
+          <Property Name="BrandName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ClassID" Type="nvarchar" MaxLength="10" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="20" />
+          <Property Name="StyleID" Type="nvarchar" MaxLength="10" />
+          <Property Name="StyleName" Type="nvarchar" MaxLength="20" />
+          <Property Name="ColorID" Type="nvarchar" MaxLength="10" />
+          <Property Name="ColorName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Size" Type="nvarchar" MaxLength="50" />
+          <Property Name="SizeRange" Type="nvarchar" MaxLength="50" />
+          <Property Name="SizeUnitMeasureID" Type="nvarchar" MaxLength="20" />
+          <Property Name="Weight" Type="float" />
+          <Property Name="WeightUnitMeasureID" Type="nvarchar" MaxLength="20" />
+          <Property Name="UnitOfMeasureID" Type="nvarchar" MaxLength="10" />
+          <Property Name="UnitOfMeasureName" Type="nvarchar" MaxLength="40" />
+          <Property Name="StockTypeID" Type="nvarchar" MaxLength="10" />
+          <Property Name="StockTypeName" Type="nvarchar" MaxLength="40" />
+          <Property Name="UnitCost" Type="money" />
+          <Property Name="UnitPrice" Type="money" />
+          <Property Name="AvailableForSaleDate" Type="datetime" />
+          <Property Name="StopSaleDate" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="7" />
+          <Property Name="ImageURL" Type="nvarchar" MaxLength="150" />
+          <Property Name="ProductURL" Type="nvarchar" MaxLength="150" />
+          <Property Name="ETLLoadID" Type="int" />
+          <Property Name="LoadDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DimProductCategory">
+          <Key>
+            <PropertyRef Name="ProductCategoryKey" />
+          </Key>
+          <Property Name="ProductCategoryKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductCategoryLabel" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductCategoryName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="ProductCategoryDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ETLLoadID" Type="int" />
+          <Property Name="LoadDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DimProductSubcategory">
+          <Key>
+            <PropertyRef Name="ProductSubcategoryKey" />
+          </Key>
+          <Property Name="ProductSubcategoryKey" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductSubcategoryLabel" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductSubcategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductSubcategoryDescription" Type="nvarchar" MaxLength="100" />
+          <Property Name="ProductCategoryKey" Type="int" />
+          <Property Name="ETLLoadID" Type="int" />
+          <Property Name="LoadDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_DimProduct_DimProductSubcategory">
+          <End Role="DimProductSubcategory" Type="Self.DimProductSubcategory" Multiplicity="0..1" />
+          <End Role="DimProduct" Type="Self.DimProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimProductSubcategory">
+              <PropertyRef Name="ProductSubcategoryKey" />
+            </Principal>
+            <Dependent Role="DimProduct">
+              <PropertyRef Name="ProductSubcategoryKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DimProductSubcategory_DimProductCategory">
+          <End Role="DimProductCategory" Type="Self.DimProductCategory" Multiplicity="0..1" />
+          <End Role="DimProductSubcategory" Type="Self.DimProductSubcategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimProductCategory">
+              <PropertyRef Name="ProductCategoryKey" />
+            </Principal>
+            <Dependent Role="DimProductSubcategory">
+              <PropertyRef Name="ProductCategoryKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ContosoRetailDWModelStoreContainer">
+          <EntitySet Name="DimProduct" EntityType="Self.DimProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimProductCategory" EntityType="Self.DimProductCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DimProductSubcategory" EntityType="Self.DimProductSubcategory" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DimProduct_DimProductSubcategory" Association="Self.FK_DimProduct_DimProductSubcategory">
+            <End Role="DimProductSubcategory" EntitySet="DimProductSubcategory" />
+            <End Role="DimProduct" EntitySet="DimProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DimProductSubcategory_DimProductCategory" Association="Self.FK_DimProductSubcategory_DimProductCategory">
+            <End Role="DimProductCategory" EntitySet="DimProductCategory" />
+            <End Role="DimProductSubcategory" EntitySet="DimProductSubcategory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ContosoRetailDWModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DimProduct">
+          <Key>
+            <PropertyRef Name="ProductKey" />
+          </Key>
+          <Property Name="ProductKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductLabel" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProductDescription" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ProductSubcategoryKey" Type="Int32" />
+          <Property Name="Manufacturer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BrandName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ClassID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ClassName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="StyleID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StyleName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ColorID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="ColorName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Size" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SizeRange" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SizeUnitMeasureID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Weight" Type="Double" />
+          <Property Name="WeightUnitMeasureID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UnitOfMeasureID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UnitOfMeasureName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="StockTypeID" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="StockTypeName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="UnitCost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AvailableForSaleDate" Type="DateTime" Precision="3" />
+          <Property Name="StopSaleDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="ImageURL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ProductURL" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="ETLLoadID" Type="Int32" />
+          <Property Name="LoadDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DimProductSubcategory" Relationship="Self.FK_DimProduct_DimProductSubcategory" FromRole="DimProduct" ToRole="DimProductSubcategory" />
+        </EntityType>
+        <EntityType Name="DimProductCategory">
+          <Key>
+            <PropertyRef Name="ProductCategoryKey" />
+          </Key>
+          <Property Name="ProductCategoryKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductCategoryLabel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCategoryName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductCategoryDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ETLLoadID" Type="Int32" />
+          <Property Name="LoadDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DimProductSubcategory" Relationship="Self.FK_DimProductSubcategory_DimProductCategory" FromRole="DimProductCategory" ToRole="DimProductSubcategory" />
+        </EntityType>
+        <EntityType Name="DimProductSubcategory">
+          <Key>
+            <PropertyRef Name="ProductSubcategoryKey" />
+          </Key>
+          <Property Name="ProductSubcategoryKey" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductSubcategoryLabel" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductSubcategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductSubcategoryDescription" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProductCategoryKey" Type="Int32" />
+          <Property Name="ETLLoadID" Type="Int32" />
+          <Property Name="LoadDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DimProduct" Relationship="Self.FK_DimProduct_DimProductSubcategory" FromRole="DimProductSubcategory" ToRole="DimProduct" />
+          <NavigationProperty Name="DimProductCategory" Relationship="Self.FK_DimProductSubcategory_DimProductCategory" FromRole="DimProductSubcategory" ToRole="DimProductCategory" />
+        </EntityType>
+        <Association Name="FK_DimProduct_DimProductSubcategory">
+          <End Role="DimProductSubcategory" Type="Self.DimProductSubcategory" Multiplicity="0..1" />
+          <End Role="DimProduct" Type="Self.DimProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimProductSubcategory">
+              <PropertyRef Name="ProductSubcategoryKey" />
+            </Principal>
+            <Dependent Role="DimProduct">
+              <PropertyRef Name="ProductSubcategoryKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DimProductSubcategory_DimProductCategory">
+          <End Role="DimProductCategory" Type="Self.DimProductCategory" Multiplicity="0..1" />
+          <End Role="DimProductSubcategory" Type="Self.DimProductSubcategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DimProductCategory">
+              <PropertyRef Name="ProductCategoryKey" />
+            </Principal>
+            <Dependent Role="DimProductSubcategory">
+              <PropertyRef Name="ProductCategoryKey" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ContosoRetailDWEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DimProduct" EntityType="Self.DimProduct" />
+          <EntitySet Name="DimProductCategory" EntityType="Self.DimProductCategory" />
+          <EntitySet Name="DimProductSubcategory" EntityType="Self.DimProductSubcategory" />
+          <AssociationSet Name="FK_DimProduct_DimProductSubcategory" Association="Self.FK_DimProduct_DimProductSubcategory">
+            <End Role="DimProductSubcategory" EntitySet="DimProductSubcategory" />
+            <End Role="DimProduct" EntitySet="DimProduct" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DimProductSubcategory_DimProductCategory" Association="Self.FK_DimProductSubcategory_DimProductCategory">
+            <End Role="DimProductCategory" EntitySet="DimProductCategory" />
+            <End Role="DimProductSubcategory" EntitySet="DimProductSubcategory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ContosoRetailDWModelStoreContainer" CdmEntityContainer="ContosoRetailDWEntities">
+          <EntitySetMapping Name="DimProduct">
+            <EntityTypeMapping TypeName="ContosoRetailDWModel.DimProduct">
+              <MappingFragment StoreEntitySet="DimProduct">
+                <ScalarProperty Name="ProductKey" ColumnName="ProductKey" />
+                <ScalarProperty Name="ProductLabel" ColumnName="ProductLabel" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="ProductSubcategoryKey" ColumnName="ProductSubcategoryKey" />
+                <ScalarProperty Name="Manufacturer" ColumnName="Manufacturer" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="StyleID" ColumnName="StyleID" />
+                <ScalarProperty Name="StyleName" ColumnName="StyleName" />
+                <ScalarProperty Name="ColorID" ColumnName="ColorID" />
+                <ScalarProperty Name="ColorName" ColumnName="ColorName" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="SizeRange" ColumnName="SizeRange" />
+                <ScalarProperty Name="SizeUnitMeasureID" ColumnName="SizeUnitMeasureID" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="WeightUnitMeasureID" ColumnName="WeightUnitMeasureID" />
+                <ScalarProperty Name="UnitOfMeasureID" ColumnName="UnitOfMeasureID" />
+                <ScalarProperty Name="UnitOfMeasureName" ColumnName="UnitOfMeasureName" />
+                <ScalarProperty Name="StockTypeID" ColumnName="StockTypeID" />
+                <ScalarProperty Name="StockTypeName" ColumnName="StockTypeName" />
+                <ScalarProperty Name="UnitCost" ColumnName="UnitCost" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="AvailableForSaleDate" ColumnName="AvailableForSaleDate" />
+                <ScalarProperty Name="StopSaleDate" ColumnName="StopSaleDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+                <ScalarProperty Name="ProductURL" ColumnName="ProductURL" />
+                <ScalarProperty Name="ETLLoadID" ColumnName="ETLLoadID" />
+                <ScalarProperty Name="LoadDate" ColumnName="LoadDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimProductCategory">
+            <EntityTypeMapping TypeName="ContosoRetailDWModel.DimProductCategory">
+              <MappingFragment StoreEntitySet="DimProductCategory">
+                <ScalarProperty Name="ProductCategoryKey" ColumnName="ProductCategoryKey" />
+                <ScalarProperty Name="ProductCategoryLabel" ColumnName="ProductCategoryLabel" />
+                <ScalarProperty Name="ProductCategoryName" ColumnName="ProductCategoryName" />
+                <ScalarProperty Name="ProductCategoryDescription" ColumnName="ProductCategoryDescription" />
+                <ScalarProperty Name="ETLLoadID" ColumnName="ETLLoadID" />
+                <ScalarProperty Name="LoadDate" ColumnName="LoadDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DimProductSubcategory">
+            <EntityTypeMapping TypeName="ContosoRetailDWModel.DimProductSubcategory">
+              <MappingFragment StoreEntitySet="DimProductSubcategory">
+                <ScalarProperty Name="ProductSubcategoryKey" ColumnName="ProductSubcategoryKey" />
+                <ScalarProperty Name="ProductSubcategoryLabel" ColumnName="ProductSubcategoryLabel" />
+                <ScalarProperty Name="ProductSubcategoryName" ColumnName="ProductSubcategoryName" />
+                <ScalarProperty Name="ProductSubcategoryDescription" ColumnName="ProductSubcategoryDescription" />
+                <ScalarProperty Name="ProductCategoryKey" ColumnName="ProductCategoryKey" />
+                <ScalarProperty Name="ETLLoadID" ColumnName="ETLLoadID" />
+                <ScalarProperty Name="LoadDate" ColumnName="LoadDate" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
