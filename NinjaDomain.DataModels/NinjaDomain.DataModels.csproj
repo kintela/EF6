@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataHelpers.cs" />
     <Compile Include="Migrations\201802081213205_Initial.cs" />
     <Compile Include="Migrations\201802081213205_Initial.Designer.cs">
       <DependentUpon>201802081213205_Initial.cs</DependentUpon>
@@ -58,6 +59,10 @@
     <Compile Include="Migrations\201802160942333_AddNuevosCampos.cs" />
     <Compile Include="Migrations\201802160942333_AddNuevosCampos.Designer.cs">
       <DependentUpon>201802160942333_AddNuevosCampos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802161124025_DeleteIsDirty.cs" />
+    <Compile Include="Migrations\201802161124025_DeleteIsDirty.Designer.cs">
+      <DependentUpon>201802161124025_DeleteIsDirty.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NinjaContext.cs" />
@@ -82,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802160942333_AddNuevosCampos.resx">
       <DependentUpon>201802160942333_AddNuevosCampos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802161124025_DeleteIsDirty.resx">
+      <DependentUpon>201802161124025_DeleteIsDirty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
