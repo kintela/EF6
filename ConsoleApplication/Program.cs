@@ -207,8 +207,8 @@ namespace ConsoleApplication
                 };
 
                 context.Ninjas.Add(ninja);
-                ninja.EquipedOwned.Add(muscles);
-                ninja.EquipedOwned.Add(spunk);
+                ninja.EquipmentOwned.Add(muscles);
+                ninja.EquipmentOwned.Add(spunk);
 
                 context.SaveChanges();
 
@@ -224,7 +224,7 @@ namespace ConsoleApplication
 
                 var ninja = context.Ninjas.FirstOrDefault(n => n.Name.StartsWith("Kacy"));
                 Console.WriteLine("Ninja retrieved:" + ninja.Name);
-                Console.WriteLine("Ninja Equipment Count: {0}", ninja.EquipedOwned.Count());
+                Console.WriteLine("Ninja Equipment Count: {0}", ninja.EquipmentOwned.Count());
             }
         }
 
@@ -235,7 +235,7 @@ namespace ConsoleApplication
                 context.Database.Log = Console.WriteLine;
 
                 var ninjas = context.Ninjas
-                    .Select(n => new { n.Name, n.DateOfBirth, n.EquipedOwned })
+                    .Select(n => new { n.Name, n.DateOfBirth, n.EquipmentOwned })
                     .ToList();
             }
         }

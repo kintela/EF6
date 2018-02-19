@@ -8,14 +8,14 @@ namespace NinjaDomain.Clases
     {
         public Ninja()
         {
-            EquipedOwned = new List<NinjaEquipment>();
+            EquipmentOwned = new List<NinjaEquipment>();
         }
         public int Id { get; set; }
         public string Name { get; set; }
         public bool ServedInOniwaban { get; set; }
         public Clan Clan { get; set; }
         public int ClanID { get; set; }
-        public List<NinjaEquipment> EquipedOwned { get; set; }
+        public List<NinjaEquipment> EquipmentOwned { get; set; }
         public System.DateTime DateOfBirth { get; set; }
 
 
