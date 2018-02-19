@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Linq;
-using Ninja.Domain.Clases;
-using Ninja.Domain.Clases.interfaces;
+using NinjaDomain.Clases;
+using NinjaDomain.Clases.interfaces;
 
 
 namespace NinjaDomain.DataModels
 {
     public class NinjaContext:DbContext
     {
-        public DbSet<Ninja.Domain.Clases.Ninja> Ninjas { get; set; }
-        public DbSet<Ninja.Domain.Clases.Clan> Clans { get; set; }
-        public DbSet<Ninja.Domain.Clases.NinjaEquipment> Equipment { get; set; }
+        public DbSet<Ninja> Ninjas { get; set; }
+        public DbSet<Clan> Clans { get; set; }
+        public DbSet<NinjaEquipment> Equipment { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

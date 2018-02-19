@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Ninja.Domain.Clases;
+using NinjaDomain.Clases;
 
 namespace NinjaDomain.DataModels
 {
@@ -19,12 +19,12 @@ namespace NinjaDomain.DataModels
         //    return _context.Ninjas.Include(n =>n.EquipmentOwned).FirstOrDefault(n => n.Id == id);
         //}
 
-        public Ninja.Domain.Clases.Ninja GetNinjaById(int id)
+        public Ninja GetNinjaById(int id)
         {
             return _context.Ninjas.Find(id);
         }
 
-        public List<Ninja.Domain.Clases.Ninja> GetNinjas()
+        public List<Ninja> GetNinjas()
         {
             return _context.Ninjas.ToList();
         }
@@ -34,7 +34,7 @@ namespace NinjaDomain.DataModels
             return _context.Clans.OrderBy(c => c.ClanName).Select(c => new { c.Id, c.ClanName }).ToList();
         }
 
-        public ObservableCollection<Ninja.Domain.Clases.Ninja> NinjasInMemory()
+        public ObservableCollection<Ninja> NinjasInMemory()
         {
             if (_context.Ninjas.Local.Count==0)
             {
@@ -50,9 +50,9 @@ namespace NinjaDomain.DataModels
             _context.SaveChanges();
         }
 
-        public Ninja.Domain.Clases.Ninja NewNinja()
+        public Ninja NewNinja()
         {
-            var ninja = new Ninja.Domain.Clases.Ninja();
+            var ninja = new Ninja();
             _context.Ninjas.Add(ninja);
             return ninja;
         }
@@ -70,7 +70,7 @@ namespace NinjaDomain.DataModels
             }
         }
 
-        public void DeleteCurrentNinja(Ninja.Domain.Clases.Ninja ninja)
+        public void DeleteCurrentNinja(Ninja ninja)
         {
             _context.Ninjas.Remove(ninja);
             Save();

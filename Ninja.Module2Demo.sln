@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjaDomain.DataModels", "NinjaDomain.DataModels\NinjaDomain.DataModels.csproj", "{A3CEF633-F524-4C65-A9FE-E1FE21025560}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ninja.Domain.Clases", "Ninja.Domain.Clases\Ninja.Domain.Clases.csproj", "{CB079A99-942D-4FA3-BFFC-E04660E78E1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjaDomain.Clases", "Ninja.Domain.Clases\NinjaDomain.Clases.csproj", "{CB079A99-942D-4FA3-BFFC-E04660E78E1B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EDMXFromDB", "EDMXFromDB\EDMXFromDB.csproj", "{1F69C318-CFFF-46D5-BD9D-0F5A2B4717F9}"
 EndProject

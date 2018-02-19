@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Ninja.Domain.Clases.interfaces;
+using NinjaDomain.Clases.interfaces;
 
-namespace Ninja.Domain.Clases
+namespace NinjaDomain.Clases
 {
     public class Clan:IModificacionHistory
     {

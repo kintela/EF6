@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Ninja.Domain.Clases
+namespace NinjaDomain.Clases
 {
     public enum EquipmentType
     {

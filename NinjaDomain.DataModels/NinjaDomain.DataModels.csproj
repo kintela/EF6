@@ -74,9 +74,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ninja.Domain.Clases\Ninja.Domain.Clases.csproj">
+    <ProjectReference Include="..\Ninja.Domain.Clases\NinjaDomain.Clases.csproj">
       <Project>{cb079a99-942d-4fa3-bffc-e04660e78e1b}</Project>
-      <Name>Ninja.Domain.Clases</Name>
+      <Name>NinjaDomain.Clases</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

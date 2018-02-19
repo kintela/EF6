@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Ninja.Domain.Clases;
+using NinjaDomain.Clases;
 using NinjaDomain.DataModels;
 
 namespace MVC5.Controllers
@@ -29,7 +29,7 @@ namespace MVC5.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ninja.Domain.Clases.Ninja ninja = db.Ninjas.Find(id);
+            Ninja ninja = db.Ninjas.Find(id);
             if (ninja == null)
             {
                 return HttpNotFound();
@@ -69,7 +69,7 @@ namespace MVC5.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ninja.Domain.Clases.Ninja ninja = db.Ninjas.Find(id);
+            Ninja ninja = db.Ninjas.Find(id);
             if (ninja == null)
             {
                 return HttpNotFound();
@@ -102,7 +102,7 @@ namespace MVC5.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Ninja.Domain.Clases.Ninja ninja = db.Ninjas.Find(id);
+            Ninja ninja = db.Ninjas.Find(id);
             if (ninja == null)
             {
                 return HttpNotFound();
@@ -115,7 +115,7 @@ namespace MVC5.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Ninja.Domain.Clases.Ninja ninja = db.Ninjas.Find(id);
+            Ninja ninja = db.Ninjas.Find(id);
             db.Ninjas.Remove(ninja);
             db.SaveChanges();
             return RedirectToAction("Index");

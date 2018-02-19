@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ninja.Domain.Clases.interfaces
+namespace NinjaDomain.Clases.interfaces
 {
     public interface IModificacionHistory
     {
