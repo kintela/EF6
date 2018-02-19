@@ -216,10 +216,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ninja.Domain.Clases\NinjaDomain.Clases.csproj">
-      <Project>{cb079a99-942d-4fa3-bffc-e04660e78e1b}</Project>
-      <Name>NinjaDomain.Clases</Name>
-    </ProjectReference>
     <ProjectReference Include="..\NinjaDomain.DataModels\NinjaDomain.DataModels.csproj">
       <Project>{a3cef633-f524-4c65-a9fe-e1fe21025560}</Project>
       <Name>NinjaDomain.DataModels</Name>

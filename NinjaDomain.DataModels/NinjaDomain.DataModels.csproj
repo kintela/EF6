@@ -74,12 +74,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ninja.Domain.Clases\NinjaDomain.Clases.csproj">
-      <Project>{cb079a99-942d-4fa3-bffc-e04660e78e1b}</Project>
-      <Name>NinjaDomain.Clases</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Migrations\201802081213205_Initial.resx">
       <DependentUpon>201802081213205_Initial.cs</DependentUpon>
     </EmbeddedResource>
