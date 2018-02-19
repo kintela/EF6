@@ -17,6 +17,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinjaDomain.Clases", "Ninja
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCAppRepository", "MVCAppRepository\MVCAppRepository.csproj", "{CFB40458-AE8A-4BA0-BF76-424F1FABC409}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC", "MVC", "{B7993000-E161-4422-92A0-646B4F7D1A60}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web API", "Web API", "{217AEEAF-7C2F-4394-9AA2-6F4FFEA6774C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{1F2B98C6-5E3F-49F4-B905-7A679B5AC0AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,9 +57,18 @@ Global
 		{CFB40458-AE8A-4BA0-BF76-424F1FABC409}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFB40458-AE8A-4BA0-BF76-424F1FABC409}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFB40458-AE8A-4BA0-BF76-424F1FABC409}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F2B98C6-5E3F-49F4-B905-7A679B5AC0AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F2B98C6-5E3F-49F4-B905-7A679B5AC0AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F2B98C6-5E3F-49F4-B905-7A679B5AC0AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F2B98C6-5E3F-49F4-B905-7A679B5AC0AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B48F99E0-3F7A-4316-A772-6B858A422A47} = {B7993000-E161-4422-92A0-646B4F7D1A60}
+		{CFB40458-AE8A-4BA0-BF76-424F1FABC409} = {B7993000-E161-4422-92A0-646B4F7D1A60}
+		{1F2B98C6-5E3F-49F4-B905-7A679B5AC0AC} = {217AEEAF-7C2F-4394-9AA2-6F4FFEA6774C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {99B8439D-3CBA-4EC7-B6C9-8116FB94B4AB}
