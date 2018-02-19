@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NinjaDomain.DataModels;
 using System.Data.Entity;
-using Ninja.Domain.Clases;
+using NinjaDomain.Clases;
 
 namespace ConsoleApplication
 {
@@ -21,7 +21,7 @@ namespace ConsoleApplication
 
         private static void InsertNinja()
         {
-            var ninja = new Ninja.Domain.Clases.Ninja
+            var ninja = new Ninja
             {
                 Name="Sonia",
                 ServedInOniwaban=false,
@@ -40,14 +40,14 @@ namespace ConsoleApplication
 
         private static void InsertMultipleNinja()
         {
-            var ninja1 = new Ninja.Domain.Clases.Ninja
+            var ninja1 = new Ninja
             {
                 Name = "Leonardo",
                 ServedInOniwaban = false,
                 DateOfBirth = new DateTime(1985, 12, 27),
                 ClanID = 1
             };
-            var ninja2 = new Ninja.Domain.Clases.Ninja
+            var ninja2 = new Ninja
             {
                 Name = "Raphael",
                 ServedInOniwaban = false,
@@ -58,7 +58,7 @@ namespace ConsoleApplication
             using (var context = new NinjaContext())
             {
                 context.Database.Log = Console.WriteLine;
-                context.Ninjas.AddRange(new List<Ninja.Domain.Clases.Ninja> { ninja1, ninja2 });
+                context.Ninjas.AddRange(new List<Ninja> { ninja1, ninja2 });
                 context.SaveChanges();
             };
 
@@ -91,7 +91,7 @@ namespace ConsoleApplication
 
         private static void QueryAndUpdateNinjaDisconnevted()
         {
-            Ninja.Domain.Clases.Ninja ninja;
+            Ninja ninja;
 
             using (var context = new NinjaContext())
             {
@@ -154,7 +154,7 @@ namespace ConsoleApplication
 
         private static void DeleteNinja()
         {
-            Ninja.Domain.Clases.Ninja ninja;
+            Ninja ninja;
 
             using (var context = new NinjaContext())
             {
@@ -186,7 +186,7 @@ namespace ConsoleApplication
             {
                 context.Database.Log = Console.WriteLine;
 
-                var ninja = new Ninja.Domain.Clases.Ninja
+                var ninja = new Ninja
                 {
                     Name="Kacy Catanzaro",
                     ServedInOniwaban=false,

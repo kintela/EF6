@@ -87,5 +87,11 @@
       <DependentUpon>201802161124025_DeleteIsDirty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NinjaDomain.Clases\NinjaDomain.Clases.csproj">
+      <Project>{cb079a99-942d-4fa3-bffc-e04660e78e1b}</Project>
+      <Name>NinjaDomain.Clases</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
