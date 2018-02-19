@@ -64,7 +64,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AWModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="DimProduct.cs">
       <DependentUpon>AWModel.tt</DependentUpon>
     </Compile>
